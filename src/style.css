@@ -1,0 +1,106 @@
+.matching-component .match-prompt-label {
+  background-color: #c3c3c3;
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+  height: 20px;
+}
+.matching-component .match-prompt-label img {
+  max-height: 150px;
+  max-width: 150px;
+}
+.matching-component .match-prompt {
+  margin: 10px 0;
+  width: 50%;
+  float: left;
+}
+
+.matching-component .match-row {
+  width: 100%;
+  display: flex;
+}
+
+.matching-component .responses-container .dropHolder {
+  margin: 10px 0;
+  width: 48%;
+  float: left;
+  padding-left: 2%;
+}
+
+.matching-component .choices-container .dropHolder {
+  margin: 10px 0;
+}
+
+.matching-component .choice-item-wrapper {
+  background-color: #fff;
+  text-align: center;
+  max-width: 200px;
+  min-width: 200px;
+}
+
+.matching-component .choice-item {
+  align-items: center;
+  background-size: 10px 8px;
+  border: 1px solid #7d7b7b;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  opacity: 1;
+}
+
+.matching-component .choices-container {
+  box-sizing: border-box;
+  font-size: 14px;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.matching-component .choice-item-wrapper.-placeholder {
+  background-color: #969696;
+  background-image: none;
+  border: none;
+}
+
+.matching-component .choices-container.-draggingChoice{
+  background-color: #ebfaff;
+  border: 2px dashed #99c9dd;
+}
+
+.matching-component .responses-container.-draggingResponse {
+  background-color: #ebfaff;
+  border: 2px dashed #99c9dd;
+}
+
+.sortable-component .choice-item.-returning {
+  background-color: #ebfaff;
+  border: 2px dashed #0078a9;
+  color: #0078a9;
+}
+.sortable-component .choice-item.-removing {
+  cursor: not-allowed !important;
+  opacity: 0.5;
+  transition: opacity 400ms;
+}
+.sortable-component .choice-item > .content {
+  margin: auto;
+}
+.sortable-component .choices-container .choice-item:not(.-dragging) {
+  transform: none !important;
+}
+.sortable-component .responses-container {
+  font-size: 14px;
+  margin-top: 10px;
+}
+.sortable-component .responses-container.-draggingChoice .choice-item {
+  background-color: #ebfaff;
+  border: 2px dashed #99c9dd;
+  color: #0078a9;
+  transform: none !important;
+}
+.sortable-component .responses-container.-draggingChoice .choice-item.-draggingOver {
+  border: 2px dashed #0078a9;
+}
+.sortable-component.-readonly .choice-item:not(.-placeholder) {
+  cursor: not-allowed;
+}
