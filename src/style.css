@@ -29,6 +29,9 @@
 
 .matching-component .choices-container .dropHolder {
   margin: 10px 0;
+  width: 98%;
+  float: left;
+  padding-left: 2%;
 }
 
 .matching-component .choice-item-wrapper {
@@ -54,6 +57,7 @@
   font-size: 14px;
   margin-top: 10px;
   padding: 5px;
+  display: flex;
 }
 
 .matching-component .choice-item-wrapper.-placeholder {
@@ -70,37 +74,4 @@
 .matching-component .responses-container.-draggingResponse {
   background-color: #ebfaff;
   border: 2px dashed #99c9dd;
-}
-
-.sortable-component .choice-item.-returning {
-  background-color: #ebfaff;
-  border: 2px dashed #0078a9;
-  color: #0078a9;
-}
-.sortable-component .choice-item.-removing {
-  cursor: not-allowed !important;
-  opacity: 0.5;
-  transition: opacity 400ms;
-}
-.sortable-component .choice-item > .content {
-  margin: auto;
-}
-.sortable-component .choices-container .choice-item:not(.-dragging) {
-  transform: none !important;
-}
-.sortable-component .responses-container {
-  font-size: 14px;
-  margin-top: 10px;
-}
-.sortable-component .responses-container.-draggingChoice .choice-item {
-  background-color: #ebfaff;
-  border: 2px dashed #99c9dd;
-  color: #0078a9;
-  transform: none !important;
-}
-.sortable-component .responses-container.-draggingChoice .choice-item.-draggingOver {
-  border: 2px dashed #0078a9;
-}
-.sortable-component.-readonly .choice-item:not(.-placeholder) {
-  cursor: not-allowed;
 }
