@@ -62,6 +62,7 @@ class App extends Component {
   getDraggable(item, uniqueKey, index) {
     let isPlaceHolder = item.key.includes('placeholders');
     return (
+      <div className="dropWrapper">
       <div className="dropHolder">
         <Draggable
           key={uniqueKey}
@@ -91,6 +92,7 @@ class App extends Component {
             );
           }}
         </Draggable>
+        </div>
       </div>
     )
   }
@@ -104,12 +106,7 @@ class App extends Component {
       </div>
     )
   }
-  /**
-   * Creates the responses list.
-   *
-   * @see https://github.com/atlassian/react-beautiful-dnd#droppable
-   * @returns {JSX} - The JSX.
-   */
+
   getResponsesList() {
     return (
       <Droppable
@@ -157,7 +154,7 @@ class App extends Component {
               })}
               ref={droppable.innerRef}
             >
-              <div>
+              <div className="match-list">
                 { 
                   this.state.choices
                   .map((choice, index) => {
@@ -184,15 +181,18 @@ class App extends Component {
     this.forceUpdate();
   }
 
-  updateResponse(result) {
-    const responses = this.state.responses;
-    const choices = this.state.choices;
+  updateResponse(result) {  
     const responseKey = result.draggableId.split(':')[1];
     const droppedAt = result.destination.droppableId.split(':')[1];
 
     this.state[this.draggedFrom].splice(result.source.index, 1);
     this.state[droppedAt].splice(result.destination.index, 0, {key: `choices:${responseKey}`, text: `item ${responseKey}`});
-    this.setState({ choices, responses });
+
+    if(this.draggedFrom !== droppedAt) {
+      const lastItem =  this.state[droppedAt].splice(-1, 1)[0];
+      this.state[this.draggedFrom].splice(result.source.index, 0, lastItem); 
+    }
+    this.setState({ choices: this.state.choices, responses: this.state.responses });
   }
 }
 
