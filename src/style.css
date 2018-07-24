@@ -46,6 +46,10 @@
   display: flex;
 }
 
+.matching-component .choice-item-wrapper:not(.-dragging) {
+  transform: none !important;
+}
+
 .matching-component .choice-item {
   align-items: center;
   background-size: 10px 8px;

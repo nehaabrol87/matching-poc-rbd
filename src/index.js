@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames2';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-// import utils from './utils';
-
+import { DragDropContext, Droppable, Draggable } from 'mhe-react-beautiful-dnd';
 import './style.css';
 
 class App extends Component {
   state = {
-    choices: this.getItems(5, 0, 0),
-    responses: this.getItems(3, 5, 1)
+    choices: this.getItems(4, 0, 0),
+    responses: this.getItems(0, 5, 4)
   }
   draggedFrom = null;
 
@@ -189,8 +187,19 @@ class App extends Component {
     this.state[droppedAt].splice(result.destination.index, 0, {key: `choices:${responseKey}`, text: `item ${responseKey}`});
 
     if(this.draggedFrom !== droppedAt) {
-      const lastItem =  this.state[droppedAt].splice(-1, 1)[0];
-      this.state[this.draggedFrom].splice(result.source.index, 0, lastItem); 
+      if (droppedAt === 'responses') {
+        const itemToRemove = this.state[droppedAt].splice([result.destination.index+1],1)[0];
+          if(!itemToRemove.key.includes('placeholders')) {
+            this.state[this.draggedFrom].splice(result.source.index, 0, itemToRemove); 
+          }
+       }  
+
+      if (droppedAt === 'choices') {
+        const currentPlaceholders = this.state[this.draggedFrom].filter(el => el.key.includes('placeholders'));
+        let currentPlaceholderIndex = currentPlaceholders.map(el => parseInt(el.key.split(':')[1])).sort().splice(-1,1)[0];
+        let newPlaceHolderIndex = currentPlaceholderIndex + 1;
+        this.state[this.draggedFrom].splice(result.source.index, 0, {key: `placeholders:${newPlaceHolderIndex}`, text: `placeholders ${newPlaceHolderIndex}`}); 
+      }
     }
     this.setState({ choices: this.state.choices, responses: this.state.responses });
   }
