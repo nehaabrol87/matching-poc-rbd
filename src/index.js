@@ -123,7 +123,7 @@ class App extends Component {
               })}
               ref={droppable.innerRef}
             >
-              <div className="match-list">
+              <div className="match-responses-list">
                 {this.state.responses
                   .map((response, index) => {
                     return this.getChoiceItem(response, response.key, index);
@@ -154,7 +154,7 @@ class App extends Component {
               })}
               ref={droppable.innerRef}
             >
-              <div className="match-list">
+              <div className="match-choices-list">
                 { 
                   this.state.choices
                   .map((choice, index) => {

@@ -32,11 +32,11 @@
 }
 
 .matching-component .choices-container .dropHolder {
-  margin: 10px 0;
   width: 100%;
   min-height: 40px;
   float: left;
   display: flex;
+  margin-top: 10px;
 }
 
 .matching-component .choice-item-wrapper {
